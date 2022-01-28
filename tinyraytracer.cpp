@@ -81,7 +81,7 @@ bool scene_intersect(const Vec3f &orig, const Vec3f &dir, const std::vector<Sphe
     }
 
     //Duck
-    Material     mirror(1.0, Vec4f(0.0, 10.0, 0.8, 0.0), Vec3f(1.0, 1.0, 1.0), 1425.);
+    Material      glass(1.5, Vec4f(0.0,  0.5, 0.1, 0.8), Vec3f(0.6, 0.7, 0.8),  125.);
     for(int i = 0 ; i < duck.nfaces() ; i++) {
         float dist;
         if(duck.ray_triangle_intersect(i, orig, dir, dist) && dist < spheres_dist) {
@@ -89,7 +89,7 @@ bool scene_intersect(const Vec3f &orig, const Vec3f &dir, const std::vector<Sphe
             spheres_dist = dist;
             hit =  orig + dir * dist;
             N = duck.normalize(i);
-            material = mirror;
+            material = glass;
         }
     }
 
